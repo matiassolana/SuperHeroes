@@ -1,4 +1,4 @@
-package org.matiassolana.superheroes.controller;
+package org.matiassolana.superheroes.test.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;

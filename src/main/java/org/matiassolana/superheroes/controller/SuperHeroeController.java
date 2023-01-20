@@ -4,6 +4,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import org.matiassolana.superheroes.configuration.TimedApi;
 import org.matiassolana.superheroes.entity.SuperHeroe;
 import org.matiassolana.superheroes.service.SuperHeroeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class SuperHeroeController {
 	public ResponseEntity<?> saludar() {
 		return ResponseEntity.ok("Hola");
 	}
-
+	@TimedApi
 	@GetMapping("/listar")
 	public ResponseEntity<?> getAllSuperHeroe() {
 		try {
@@ -44,11 +45,13 @@ public class SuperHeroeController {
 		}
 	}
 
+	@TimedApi	
 	@GetMapping("/{id}")
 	public SuperHeroe getSuperHeroeById(@PathVariable long id) {
 		return superHeroeService.getSuperHeroeById(id);
 	}
 
+	@TimedApi
 	@GetMapping("/namecontains")
 	public ResponseEntity<?> getAllSuperHeroeContainingString(@RequestParam String string) {
 		try {
@@ -61,12 +64,14 @@ public class SuperHeroeController {
 			return ResponseEntity.internalServerError().build();
 		}
 	}
-
+	
+	@TimedApi
 	@PostMapping("/createsuperheroe")
 	public SuperHeroe createSuperHeroe(@RequestBody SuperHeroe superheroe) {
 		return superHeroeService.createSuperHeroe(superheroe);
 	}
 
+	@TimedApi
 	@PutMapping("/modify/{id}")
 	public ResponseEntity<SuperHeroe> updateSuperHeroe(@PathVariable Long id,
 			@RequestBody SuperHeroe superHeroeDetails) {
@@ -77,6 +82,7 @@ public class SuperHeroeController {
 		return ResponseEntity.ok(superHeroeService.updateSuperHeroe(updateSuperHeroe));
 	}
 	
+	@TimedApi
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(NO_CONTENT)
 	public void deleteSuperHeroe(@PathVariable Long id) {
