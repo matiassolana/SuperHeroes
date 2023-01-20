@@ -5,6 +5,7 @@ import java.util.List;
 import org.matiassolana.superheroes.entity.SuperHeroe;
 import org.matiassolana.superheroes.repository.SuperHeroeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ public class SuperHeroeServiceImpl implements SuperHeroeService{
 	private SuperHeroeRepository superHeroeRepository;
 	
 	@Override
+	@Cacheable("SuperHeroe")
 	public List<SuperHeroe> getAllSuperHeroe() {
         return superHeroeRepository.findAll();
     }
