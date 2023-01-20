@@ -5,11 +5,9 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import java.util.List;
 
 import org.matiassolana.superheroes.entity.SuperHeroe;
-import org.matiassolana.superheroes.repository.SuperHeroeRepository;
 import org.matiassolana.superheroes.service.SuperHeroeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +32,7 @@ public class SuperHeroeController {
 	}
 
 	@GetMapping("/listar")
-	public ResponseEntity<?> getAllEmployees() {
+	public ResponseEntity<?> getAllSuperHeroe() {
 		try {
 			List<SuperHeroe> list = superHeroeService.getAllSuperHeroe();
 			if (list.isEmpty() || list.size() == 0) {
@@ -47,12 +45,12 @@ public class SuperHeroeController {
 	}
 
 	@GetMapping("/{id}")
-	public SuperHeroe getEmployeeById(@PathVariable long id) {
+	public SuperHeroe getSuperHeroeById(@PathVariable long id) {
 		return superHeroeService.getSuperHeroeById(id);
 	}
 
 	@GetMapping("/namecontains")
-	public ResponseEntity<?> getAllEmployeesContainingString(@RequestParam String string) {
+	public ResponseEntity<?> getAllSuperHeroeContainingString(@RequestParam String string) {
 		try {
 			List<SuperHeroe> list = superHeroeService.findByNameContaining(string);
 			if (list.isEmpty() || list.size() == 0) {
@@ -65,7 +63,7 @@ public class SuperHeroeController {
 	}
 
 	@PostMapping("/createsuperheroe")
-	public SuperHeroe createEmployee(@RequestBody SuperHeroe superheroe) {
+	public SuperHeroe createSuperHeroe(@RequestBody SuperHeroe superheroe) {
 		return superHeroeService.createSuperHeroe(superheroe);
 	}
 
