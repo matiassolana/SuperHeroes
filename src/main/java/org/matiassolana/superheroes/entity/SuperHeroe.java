@@ -1,11 +1,13 @@
-package org.matiassolana.entity;
+package org.matiassolana.superheroes.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "tbl_superheroe")
 public class SuperHeroe {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +15,11 @@ public class SuperHeroe {
 	
 	private String name;
 	
+	
+	public SuperHeroe() {
+		super();
+	}
+
 	public SuperHeroe(Long id, String name) {
 		super();
 		this.id = id;
